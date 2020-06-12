@@ -3,9 +3,12 @@
     "version": "0.0.1",
     "description": "Foxy Dev Dependency",
     "dependencies": {
-        "webpack": "*"
+        "webpack": "^4.0"
     },
     "devDependencies": {
-        "stylelint": "*"
+        "stylelint": "^12.0"
+    },
+    "engines": {
+        "node": "8.17"
     }
 }

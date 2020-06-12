@@ -118,7 +118,7 @@ interface AssetManagerInterface
     /**
      * Run the asset manager to install/update the asset dependencies.
      *
-     * @return int
+     * @return AssetManagerResult
      */
     public function run();
 }

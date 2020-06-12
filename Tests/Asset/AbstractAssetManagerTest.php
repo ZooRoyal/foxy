@@ -371,7 +371,10 @@ abstract class AbstractAssetManagerTest extends \PHPUnit\Framework\TestCase
 
         $this->executor->addExpectedValues($expectedRes, 'ASSET MANAGER OUTPUT');
 
-        static::assertSame($expectedRes, $this->manager->run());
+        $result = $this->manager->run();
+
+        static::assertSame($expectedRes, $result->getExitCode());
+        static::assertStringEndsWith($action, $result->getCommand());
         static::assertSame($expectedCommand, $this->executor->getLastCommand());
         static::assertSame('ASSET MANAGER OUTPUT', $this->executor->getLastOutput());
     }

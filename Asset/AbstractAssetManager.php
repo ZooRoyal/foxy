@@ -217,11 +217,15 @@ abstract class AbstractAssetManager implements AssetManagerInterface
         $res = (int) $this->executor->execute($cmd);
         ProcessExecutor::setTimeout($timeout);
 
+        $errorReason = null;
         if ($res > 0 && null !== $this->fallback) {
             $this->fallback->restore();
+            $errorReason = $this->executor->getErrorOutput();
         }
 
-        return $res;
+        $result = new AssetManagerResult($cmd, $res, $errorReason);
+
+        return $result;
     }
 
     /**

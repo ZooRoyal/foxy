@@ -23,6 +23,7 @@ use Composer\Repository\WritableRepositoryInterface;
 use Composer\Util\Filesystem;
 use Composer\Util\HttpDownloader;
 use Foxy\Asset\AssetManagerInterface;
+use Foxy\Asset\AssetManagerResult;
 use Foxy\Config\Config;
 use Foxy\Fallback\FallbackInterface;
 use Foxy\Solver\Solver;
@@ -228,24 +229,27 @@ final class SolverTest extends \PHPUnit\Framework\TestCase
     public function getSolveData()
     {
         return array(
-            array(0, array(
+            array(new AssetManagerResult('not important', 0), array(
                 'foo/bar' => new Link('somepackage/package', 'foxy/foxy'),
             )),
-            array(0, array()),
-            array(1, array()),
-            array(1, array(
-                'foo/bar' => new Link('somepackage/package', 'foxy/foxy'),
-            )),
+            array(new AssetManagerResult('not important', 0), array()),
+            array(new AssetManagerResult('not important', 1, 'Some Error'), array()),
+            array(
+                new AssetManagerResult('not important', 1, 'Some Error'),
+                array(
+                    'foo/bar' => new Link('somepackage/package', 'foxy/foxy'),
+                )
+            ),
         );
     }
 
     /**
      * @dataProvider getSolveData
      *
-     * @param int $resRunManager The result value of the run command of asset manager
-     * @param int $devRequires   The development requirements
+     * @param AssetManagerResult $resRunManager The result value of the run command of asset manager
+     * @param int $devRequires The development requirements
      */
-    public function testSolve($resRunManager, $devRequires)
+    public function testSolve(AssetManagerResult $resRunManager, $devRequires)
     {
         /* @var PackageInterface|\PHPUnit_Framework_MockObject_MockObject $requirePackage */
 
@@ -289,7 +293,7 @@ final class SolverTest extends \PHPUnit\Framework\TestCase
             ->willReturn($resRunManager)
         ;
 
-        if (0 === $resRunManager) {
+        if (0 === $resRunManager->getExitCode()) {
             $this->composerFallback->expects(static::never())
                 ->method('restore')
             ;

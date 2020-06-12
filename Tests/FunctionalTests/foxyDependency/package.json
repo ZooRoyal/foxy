@@ -3,9 +3,12 @@
     "version": "0.0.1",
     "description": "Foxy Dependency",
     "dependencies": {
-        "grunt": "*"
+        "grunt": "1.0.2"
     },
     "devDependencies": {
-        "eslint": "*"
+        "eslint": "^6.0"
+    },
+    "engines": {
+        "node": "8.17"
     }
 }

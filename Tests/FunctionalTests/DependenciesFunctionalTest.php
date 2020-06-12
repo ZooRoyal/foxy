@@ -33,7 +33,8 @@ final class DependenciesFunctionalTest extends TestCase
     {
         $returnValue = '';
 
-        $copyCommand = 'cp -R '.__DIR__.'/../../ '.' /tmp/foxyroot';
+        $testRootDirectory = '/tmp/foxyroot';
+        $copyCommand = 'mkdir '.$testRootDirectory.' && cp -R '.__DIR__.'/../../ '.$testRootDirectory;
 
         exec($copyCommand, $unused, $returnValue);
 
