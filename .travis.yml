@@ -17,6 +17,8 @@ matrix:
         - php: 7.1
           env: COMPOSER_VERSION="1.9.*"
         - php: 7.1
+          env: COMPOSER_VERSION="1.10.*"
+        - php: 7.1
           env: COMPOSER_VERSION="2.0.*@dev"
         - php: 7.2
           env: COMPOSER_VERSION="1.6.*"
@@ -27,6 +29,8 @@ matrix:
         - php: 7.2
           env: COMPOSER_VERSION="1.9.*"
         - php: 7.2
+          env: COMPOSER_VERSION="1.10.*"
+        - php: 7.2
           env: COMPOSER_VERSION="2.0.*@dev"
         - php: 7.3
           env: COMPOSER_VERSION="1.6.*"
@@ -37,6 +41,8 @@ matrix:
         - php: 7.3
           env: COMPOSER_VERSION="1.9.*"
         - php: 7.3
+          env: COMPOSER_VERSION="1.10.*"
+        - php: 7.3
           env: COMPOSER_VERSION="2.0.*@dev"
         - php: 7.4
           env: COMPOSER_VERSION="1.6.*"
@@ -47,6 +53,8 @@ matrix:
         - php: 7.4
           env: COMPOSER_VERSION="1.9.*"
         - php: 7.4
+          env: COMPOSER_VERSION="1.10.*"
+        - php: 7.4
           env: COMPOSER_VERSION="2.0.*@dev"
         - php: nightly
           env: COMPOSER_VERSION="1.6.*"
@@ -56,6 +64,8 @@ matrix:
           env: COMPOSER_VERSION="1.8.*"
         - php: nightly
           env: COMPOSER_VERSION="1.9.*"
+        - php: nightly
+          env: COMPOSER_VERSION="1.10.*"
         - php: nightly
           env: COMPOSER_VERSION="2.0.*@dev"
 
